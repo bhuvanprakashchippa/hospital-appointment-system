@@ -12,3 +12,15 @@ class Patient:
             f"Age: {self.age}, "
             f"Phone: {self.phone}"
         )
+
+def validate_patient(patient):
+    if not patient.name:
+        return False
+
+    if patient.age <= 0:
+        return False
+
+    if not patient.phone:
+        return False
+
+    return True
