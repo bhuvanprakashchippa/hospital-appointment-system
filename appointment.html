@@ -11,21 +11,23 @@
 
     <h1>Appointment Scheduling</h1>
 
-    <form>
+    <form onsubmit="return validateAppointment()">
+
         <label>Patient Name:</label>
-        <input type="text" name="patient_name">
+        <input type="text" id="patient_name" name="patient_name" required>
 
         <label>Doctor Name:</label>
-        <input type="text" name="doctor_name">
+        <input type="text" id="doctor_name" name="doctor_name" required>
 
         <label>Appointment Date:</label>
-        <input type="date" name="appointment_date">
+        <input type="date" id="appointment_date" name="appointment_date" required>
 
         <label>Appointment Time:</label>
-        <input type="time" name="appointment_time">
+        <input type="time" id="appointment_time" name="appointment_time" required>
 
         <label>Appointment Type:</label>
-        <select name="appointment_type">
+        <select name="appointment_type" required>
+            <option value="">Select Appointment Type</option>
             <option>General Consultation</option>
             <option>Follow-up</option>
             <option>Emergency</option>
@@ -33,6 +35,23 @@
 
         <button type="submit">Schedule Appointment</button>
     </form>
+
+    <script>
+        function validateAppointment() {
+            const patient = document.getElementById("patient_name").value;
+            const doctor = document.getElementById("doctor_name").value;
+            const date = document.getElementById("appointment_date").value;
+            const time = document.getElementById("appointment_time").value;
+
+            if (patient === "" || doctor === "" || date === "" || time === "") {
+                alert("Please fill in all appointment details.");
+                return false;
+            }
+
+            alert("Appointment scheduled successfully!");
+            return false;
+        }
+    </script>
 
 </body>
 </html>
